@@ -3,8 +3,8 @@ from PIL import Image
 import os
 from torchvision import transforms
 
-class MyData(Dataset):
 
+class MyData(Dataset):
     def __init__(self, root_dir, image_dir, label_dir, transform=None):
         self.root_dir = root_dir
         self.image_dir = image_dir
@@ -30,7 +30,6 @@ class MyData(Dataset):
         if self.transform:
             img = transform(img)
 
-
         return img, label
 
     def __len__(self):
@@ -46,7 +45,3 @@ ants_dataset = MyData(root_dir, image_ants, label_ants, transform=transform)
 image_bees = "bees_image"
 label_bees = "bees_label"
 bees_dataset = MyData(root_dir, image_bees, label_bees, transform=transform)
-
-
-
-

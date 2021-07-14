@@ -1,12 +1,14 @@
+# P6. Dataset类代码实战
 from torch.utils.data import Dataset, DataLoader
 import numpy as np
 from PIL import Image
 import os
 from torchvision import transforms
-from torch.utils.tensorboard import SummaryWriter
+# from torch.utils.tensorboard import SummaryWriter
 from torchvision.utils import make_grid
 
-writer = SummaryWriter("logs")
+# writer = SummaryWriter("logs")
+
 
 class MyData(Dataset):
 
@@ -42,6 +44,7 @@ class MyData(Dataset):
         assert len(self.image_list) == len(self.label_list)
         return len(self.image_list)
 
+
 if __name__ == '__main__':
     transform = transforms.Compose([transforms.Resize((256, 256)), transforms.ToTensor()])
     root_dir = "dataset/train"
@@ -56,8 +59,8 @@ if __name__ == '__main__':
     # transforms = transforms.Compose([transforms.Resize(256, 256)])
     dataloader = DataLoader(train_dataset, batch_size=1, num_workers=2)
 
-    writer.add_image('error', train_dataset[119]['img'])
-    writer.close()
+    # writer.add_image('error', train_dataset[119]['img'])
+   #  writer.close()
     # for i, j in enumerate(dataloader):
     #     # imgs, labels = j
     #     print(type(j))
@@ -65,6 +68,3 @@ if __name__ == '__main__':
     #     # writer.add_image("train_data_b2", make_grid(j['img']), i)
     #
     # writer.close()
-
-
-
